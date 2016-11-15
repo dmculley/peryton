@@ -15,6 +15,13 @@ __status__     = 'PRE-RELEASE: early development'
 
 # Import the modules for the package
 from helpers import *
+from problem import *
+from domain import *
+from boundary_conditions import *
+from initial_conditions import *
+from solvers import *
+from navier_stokes import *
+
 
 # Print welcome message
 import time
@@ -33,6 +40,7 @@ if MPI.COMM_WORLD.Get_rank() == 0:
     except: label = 'Could not retrieve git hash code'
     info_out('Installation hash code: ' + label)
     info_out('Installation location: {}\n'.format(__file__))
+
 
 # Make firedrake (or COFFEE really) a little less chatty
 set_log_level('CRITICAL')

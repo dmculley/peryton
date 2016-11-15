@@ -34,13 +34,13 @@ class VelocityPressureSolver(object):
         solve.
         """
         # Get the problem
-        self.get_problems():
+        self.get_problems()
         # Get the solver parameters
-        self.get_petsc_params():
+        self.get_petsc_params()
         # Define the solver
         self.solver = LinearVariationalSolver(self.problem,
-                                             solver_parameters=self.petsc_params
-                                             options_prefix='TODO_')
+                                            solver_parameters=self.petsc_params,
+                                            options_prefix='TODO_')
 
 
     def get_problems(self):
@@ -56,5 +56,10 @@ class VelocityPressureSolver(object):
 
     def get_forms(self):
         """ Make the variational forms for the velocity / pressure solve.
+        """
+        pass
+
+    def get_petsc_params(self):
+        """
         """
         pass

@@ -5,20 +5,23 @@
 """
 
 from firedrake import *
-from ../helpers import *
-from ../generic_backend import *
+from ..helpers import *
+from ..generic_backend import *
 
-class BackendNSParameters(GenericBackendParameters):
+class NS_BackendParameters(GenericBackendParameters):
 
     variable_dictionary = {'u': 'Velocity',
                            'p': 'Pressure'}
 
 
-class BackendNS(GenericBackend):
+class NS_Backend(GenericBackend):
     """ Provides backend functionality specific to the Navier Stokes solver.
     """
 
     def __init__(self, parameters, problem):
+
+        # Initialise the base class
+        super(NS_Backend, self).__init__(parameters, problem)
 
         self.params = parameters
         self.problem = problem

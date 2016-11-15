@@ -4,10 +4,17 @@
 
 """
 
+from firedrake import *
+from helpers import *
+import os
+import sys
+import time
+
 class GenericBackendParameters(FrozenClass):
 
-    output_dir = os.getcwd() + '/results'
-    output_file = output.pvd
+    output_dir = os.getcwd() + '/' + 'out_' + sys.argv[0][:-3] + '_on{0}_at{1}'\
+                 .format(time.strftime("%d%m"), time.strftime("%H%M"))
+    output_file = 'output.pvd'
     dump_period = 0
 
 

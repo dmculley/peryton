@@ -4,6 +4,8 @@
 
 """
 
+from helpers import *
+
 class ProblemParameters(FrozenClass):
     """
     """
@@ -24,6 +26,9 @@ class ProblemParameters(FrozenClass):
 
     # Problem domain
     domain = None
+
+    # Time parameters
+    dt = None
 
 
 class Problem(object):

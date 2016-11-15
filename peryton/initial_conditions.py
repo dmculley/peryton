@@ -9,25 +9,15 @@ from helpers import info_out
 
 
 class NS_InitialConditions(object):
-   """ Holds the initial conditions for Navier-Stokes solves -- i.e. for
+    """ Holds the initial conditions for Navier-Stokes solves -- i.e. for
     velocity and pressure
 
     Users can pass a :class:`firedrake.expression`, :class:`firedrake.function`
     or float.
     """
 
-    def __init__(self, domain):
-        self.n_dims = domain.n_dims
-        self._get_default_ns_ics(n_dims)
-
-
-    def _get_default_ns_ics(self, n_dims):
-        if n_dims == 2:
-            self.ic_u = Constant((0, 0))
-        else:
-            self.ic_u = Constant((0, 0, 0))
-
-        self.ic_p = Constant(0)
+    def __init__(self):
+        pass
 
 
     def process_initial_conditions(self):
