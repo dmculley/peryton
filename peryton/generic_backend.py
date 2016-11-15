@@ -28,4 +28,4 @@ class GenericBackend(object):
         for function in self.params.parameter_dictionary.keys():
             if function in self.ics.keys():
                 for field in self.diagnostic_functions[function]:
-                    field.interpolate(self.ics[function])
+                    field.interpolate(self.ics.initial_conditions[function])
