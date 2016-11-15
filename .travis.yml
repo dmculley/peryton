@@ -1,0 +1,51 @@
+sudo: false
+
+language: python
+python: "2.7"
+addons:
+  apt:
+    packages:
+        - build-essential
+        - python-dev
+        - git
+        - python-pip
+        - python-scipy
+        - libopenmpi-dev
+        - openmpi-bin
+        - libblas-dev
+        - liblapack-dev
+        - gfortran
+        - libspatialindex-dev
+os:
+  - linux
+
+cache:
+  directories:
+    - $HOME/install/firedrake/
+
+env:
+  global:
+    - CC=mpicc
+    - PETSC_CONFIGURE_OPTIONS="--download-chaco=1 --download-ctetgen=1 --download-exodusii=1 --download-hdf5=1 --download-hypre=1 --download-metis=1 --download-ml=1 --download-netcdf=1 --download-parmetis=1 --download-ptscotch=1 --download-scalapack=1 --download-triangle=1 --download-mumps=1"
+
+before_install:
+  - pip install -U pip
+  - pip install -U virtualenv
+  - pip install pep8-naming
+
+install:
+  - mkdir -p $HOME/install
+  - pushd $HOME/install
+  - curl -O https://raw.githubusercontent.com/firedrakeproject/firedrake/master/scripts/firedrake-install
+  # Check for cached install
+  - if [[ ! -f ./firedrake/bin/activate ]]; then python ./firedrake-install --disable-ssh --minimal-petsc --adjoint; fi
+  - . ./firedrake/bin/activate
+  - pip install pytest
+  - pip install matplotlib
+  - pip install scipy
+  - popd
+  # Make Peryton visible, we don't want to pip install it, because then it will be cached by travis
+  - export PYTHONPATH=`pwd`:$PYTHONPATH
+
+script:
+  - py.test -v tests/
