@@ -38,3 +38,14 @@ class NS_Algorithm(NS_Backend):
     def run(self):
         """ Runs the XXX algorithm
         """
+
+        # Set initial conditions
+        self.apply_intial_conditions()
+
+        # Apply boundary conditions
+        self.apply_boundary_conditions()
+
+        # Write ICs to file
+
+
+        # Begin iterating

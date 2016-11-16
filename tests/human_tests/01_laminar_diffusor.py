@@ -59,7 +59,7 @@ problem = Problem(problem_parameters)
 algorithm_parameters = NS_Algorithm.default_parameters()
 
 # Finish setting up the algorithm
-algorithm_parameters.dump_period = 1
+algorithm_parameters.output_frequency = 1
 algorithm = NS_Algorithm(algorithm_parameters, problem)
 
 # And set it running

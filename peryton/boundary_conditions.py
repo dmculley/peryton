@@ -19,6 +19,7 @@ class NS_BoundaryConditions(object):
         # Keep a list of the boundary conditions that have been set
         self.list_of_bcs_set = []
 
+
     def _diagnose_input(self, bc_list, expression, facet_id, time_dependent):
         """ Looks at what has been passed in and appends to the specified
         boundary condition list appropriately
@@ -35,6 +36,7 @@ class NS_BoundaryConditions(object):
         else:
             bc_list.append([expression, facet_id, time_dependent])
 
+
     def add_bc_u(self, expression, facet_id, time_dependent=False):
         """ List of velocity boundary conditions' parameters
 
@@ -44,6 +46,7 @@ class NS_BoundaryConditions(object):
         :type facet_id: int
         """
         self._diagnose_input(self.bc_u_list, expression, facet_id, time_dependent)
+
 
     def add_bc_p(self, expression=None, facet_id=None, time_dependent=False):
         """ List of pressure boundary conditions' parameters
